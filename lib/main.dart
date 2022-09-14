@@ -22,30 +22,39 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Enter your username',
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(32),
+                  child: Image.network(
+                    "https://i.ibb.co/CwzHq4z/trans-logo-512.png",
+                    width: 84,
+                  ),
                 ),
-              ),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Enter your password',
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Enter your username',
+                  ),
                 ),
-              ),
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(top: 16),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Submit'),
+                TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Enter your password',
+                  ),
                 ),
-              ),
-            ],
+                Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.only(top: 16),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Submit'),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
