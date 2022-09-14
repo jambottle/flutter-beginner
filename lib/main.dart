@@ -37,9 +37,13 @@ class MyApp extends StatelessWidget {
                   labelText: 'Enter your password',
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('Submit'),
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(top: 16),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Submit'),
+                ),
               ),
             ],
           ),
