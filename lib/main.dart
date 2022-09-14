@@ -22,24 +22,27 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        body: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Enter your username',
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Enter your username',
+                ),
               ),
-            ),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Enter your password',
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Enter your password',
+                ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text('Submit'),
-            ),
-          ],
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Submit'),
+              ),
+            ],
+          ),
         ),
       ),
     );
