@@ -46,40 +46,75 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          /* 사진 */
+          Image.network(
+            "https://cdn2.thecatapi.com/images/kat_7kqBi.png",
+            width: double.infinity,
+            height: 400,
+            fit: BoxFit.cover,
+          ),
+
+          /* 아이콘 목록 (좋아요, 댓글, 저장) */
+          Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(32),
-                child: Image.network(
-                  "https://i.ibb.co/CwzHq4z/trans-logo-512.png",
-                  width: 84,
+              IconButton(
+                icon: Icon(
+                  CupertinoIcons.heart,
+                  color: Colors.black,
                 ),
+                onPressed: () {},
               ),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Enter your username',
+              IconButton(
+                icon: Icon(
+                  CupertinoIcons.chat_bubble,
+                  color: Colors.black,
                 ),
+                onPressed: () {},
               ),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Enter your password',
+              Spacer(),
+              IconButton(
+                icon: Icon(
+                  CupertinoIcons.bookmark,
+                  color: Colors.black,
                 ),
-              ),
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(top: 16),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Submit'),
-                ),
+                onPressed: () {},
               ),
             ],
           ),
-        ),
+
+          /* 좋아요 수 */
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "2 likes",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+          /* 설명 */
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "My cat is docile even when bathed. I put a duck on his head in the wick and he's staring at me. Isn't it so cute? 🤭",
+            ),
+          ),
+
+          /* 날짜 */
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "FEBURARY 6",
+              style: TextStyle(
+                color: Colors.grey,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
