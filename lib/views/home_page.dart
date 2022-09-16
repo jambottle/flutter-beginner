@@ -33,7 +33,12 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: FeedItem(),
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return FeedItem();
+        },
+      ),
     );
   }
 }
