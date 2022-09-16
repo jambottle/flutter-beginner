@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,6 +19,22 @@ class MyApp extends StatelessWidget {
             'assets/logo.png',
             height: 32,
           ),
+          leading: IconButton(
+            icon: Icon(
+              CupertinoIcons.camera,
+              color: Colors.black,
+            ),
+            onPressed: () {},
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(
+                CupertinoIcons.paperplane,
+                color: Colors.black,
+              ),
+              onPressed: () {},
+            ),
+          ],
         ),
         body: SingleChildScrollView(
           child: Padding(
