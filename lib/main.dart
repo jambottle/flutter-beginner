@@ -14,12 +14,9 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(
-            'Hello, Flutter!',
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
+          title: Image.asset(
+            'assets/logo.png',
+            height: 32,
           ),
         ),
         body: SingleChildScrollView(
