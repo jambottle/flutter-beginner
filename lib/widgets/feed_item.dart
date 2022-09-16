@@ -1,8 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class FeedItem extends StatelessWidget {
+class FeedItem extends StatefulWidget {
   const FeedItem({Key? key}) : super(key: key);
+
+  @override
+  State<FeedItem> createState() => _FeedItemState();
+}
+
+class _FeedItemState extends State<FeedItem> {
+  /* Local State */
+  bool isHeartLiked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +31,13 @@ class FeedItem extends StatelessWidget {
             IconButton(
               icon: Icon(
                 CupertinoIcons.heart,
-                color: Colors.black,
+                color: isHeartLiked ? Colors.pink : Colors.black,
               ),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  isHeartLiked = !isHeartLiked;
+                });
+              },
             ),
             IconButton(
               icon: Icon(
