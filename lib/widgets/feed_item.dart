@@ -2,7 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FeedItem extends StatefulWidget {
-  const FeedItem({Key? key}) : super(key: key);
+  const FeedItem({
+    Key? key,
+    required this.imageUrl,
+  }) : super(key: key);
+
+  /* Props */
+  final String imageUrl;
 
   @override
   State<FeedItem> createState() => _FeedItemState();
@@ -19,7 +25,7 @@ class _FeedItemState extends State<FeedItem> {
       children: [
         /* 사진 */
         Image.network(
-          "https://cdn2.thecatapi.com/images/kat_7kqBi.png",
+          widget.imageUrl,
           width: double.infinity,
           height: 400,
           fit: BoxFit.cover,
