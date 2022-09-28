@@ -1,11 +1,22 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../views/home_page.dart';
 
 class BottomNavigationBarController extends GetxController {
   static BottomNavigationBarController get to => Get.find();
 
-  final selectedIndex = 0.obs;
+  final currentIndex = 0.obs;
 
-  void changeIndex(int index) {
-    selectedIndex.value = index;
+  List<Widget> pages = [
+    HomePage(),
+    Text('Search'),
+    Text('Account'),
+  ];
+
+  Widget get currentPage => pages[currentIndex.value];
+
+  void changePage(int index) {
+    currentIndex.value = index;
   }
 }

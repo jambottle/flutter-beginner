@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'controllers/bottom_navigation_bar_controller.dart';
-import 'views/home_page.dart';
 
 class GlobalScaffold extends StatelessWidget {
   const GlobalScaffold({Key? key}) : super(key: key);
@@ -40,10 +39,12 @@ class GlobalScaffold extends StatelessWidget {
             ),
           ],
         ),
-        body: HomePage(),
+        body: Center(
+          child: controller.currentPage,
+        ),
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: controller.selectedIndex.value,
-          onTap: controller.changeIndex,
+          currentIndex: controller.currentIndex.value,
+          onTap: controller.changePage,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
