@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../views/account_page.dart';
 import '../views/home_page.dart';
 
 class BottomNavbarController extends GetxController {
@@ -11,7 +12,7 @@ class BottomNavbarController extends GetxController {
   List<Widget> pages = [
     HomePage(),
     Text('Search'),
-    Text('Account'),
+    AccountPage(),
   ];
 
   Widget get currentPage => pages[currentIndex.value];
