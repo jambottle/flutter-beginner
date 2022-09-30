@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import '../views/home_page.dart';
 
-class BottomNavigationBarController extends GetxController {
-  static BottomNavigationBarController get to => Get.find();
+class BottomNavbarController extends GetxController {
+  static BottomNavbarController get to => Get.find();
 
   final currentIndex = 0.obs;
 

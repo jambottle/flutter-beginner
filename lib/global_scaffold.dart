@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'controllers/bottom_navigation_bar_controller.dart';
+import 'controllers/bottom_navbar_controller.dart';
 
 class GlobalScaffold extends StatelessWidget {
   const GlobalScaffold({Key? key}) : super(key: key);
@@ -10,8 +10,7 @@ class GlobalScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /* Global State */
-    final BottomNavigationBarController controller =
-        Get.put(BottomNavigationBarController());
+    final BottomNavbarController controller = Get.put(BottomNavbarController());
 
     return Obx(
       () => Scaffold(
