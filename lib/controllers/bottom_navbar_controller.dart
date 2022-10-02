@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../views/account_page.dart';
 import '../views/home_page.dart';
+import '../views/search_page.dart';
 
 class BottomNavbarController extends GetxController {
   static BottomNavbarController get to => Get.find();
@@ -11,7 +12,7 @@ class BottomNavbarController extends GetxController {
 
   List<Widget> pages = [
     HomePage(),
-    Text('Search'),
+    SearchPage(),
     AccountPage(),
   ];
 
