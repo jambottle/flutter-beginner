@@ -60,16 +60,25 @@ class _CreatePageState extends State<CreatePage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          _image == null ? Text('No Image') : Image.file(_image!),
-          TextField(
-            controller: textEditingController,
-            decoration: InputDecoration(
-              hintText: '문구 입력...',
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _image == null
+                ? Text('No Image')
+                : Image.file(
+                    _image!,
+                    width: double.infinity,
+                    height: 400,
+                    fit: BoxFit.cover,
+                  ),
+            TextField(
+              controller: textEditingController,
+              decoration: InputDecoration(
+                hintText: '문구 입력...',
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_a_photo),
