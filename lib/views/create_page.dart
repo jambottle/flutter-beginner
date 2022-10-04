@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CreatePage extends StatefulWidget {
   const CreatePage({Key? key}) : super(key: key);
@@ -10,6 +13,18 @@ class CreatePage extends StatefulWidget {
 class _CreatePageState extends State<CreatePage> {
   /* Local Controller */
   final textEditingController = TextEditingController();
+  final ImagePicker _picker = ImagePicker();
+
+  /* Local State */
+  File? _image;
+
+  Future _getImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      _image = File(image!.path);
+    });
+  }
 
   @override
   void dispose() {
@@ -47,7 +62,7 @@ class _CreatePageState extends State<CreatePage> {
       ),
       body: Column(
         children: [
-          Text('No Image'),
+          _image == null ? Text('No Image') : Image.file(_image!),
           TextField(
             controller: textEditingController,
             decoration: InputDecoration(
@@ -58,7 +73,7 @@ class _CreatePageState extends State<CreatePage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_a_photo),
-        onPressed: () {},
+        onPressed: _getImage,
       ),
     );
   }
