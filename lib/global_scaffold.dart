@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'controllers/bottom_navbar_controller.dart';
+import 'views/create_page.dart';
 
 class GlobalScaffold extends StatelessWidget {
   const GlobalScaffold({Key? key}) : super(key: key);
@@ -29,6 +30,18 @@ class GlobalScaffold extends StatelessWidget {
             onPressed: () {},
           ),
           actions: [
+            IconButton(
+              icon: Icon(
+                CupertinoIcons.plus_app,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CreatePage()),
+                );
+              },
+            ),
             IconButton(
               icon: Icon(
                 CupertinoIcons.paperplane,
