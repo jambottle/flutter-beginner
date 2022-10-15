@@ -18,11 +18,7 @@ class AppController extends GetxController {
     if (prevSettings.authorizationStatus == AuthorizationStatus.notDetermined) {
       NotificationSettings settings = await messaging.requestPermission(
         alert: true,
-        announcement: false,
         badge: true,
-        carPlay: false,
-        criticalAlert: false,
-        provisional: false,
         sound: true,
       );
 
@@ -49,5 +45,12 @@ class AppController extends GetxController {
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
+
+    // Set the iOS Notification Options for heads up notifications
+    await messaging.setForegroundNotificationPresentationOptions(
+      alert: true, // Required to display a heads up notification
+      badge: true,
+      sound: true,
+    );
   }
 }
