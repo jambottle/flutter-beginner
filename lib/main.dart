@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,11 +11,17 @@ import 'firebase_options.dart';
 import 'global_scaffold.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  /* Global State */
+  final AppController appController = Get.put(AppController());
+
   // If you're going to use other Firebase services in the background,
   // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await appController.setupNotifications();
+  appController.showNotification(message);
 
   print("Handling a background message: ${message.messageId}");
 }
@@ -52,7 +59,13 @@ class _MyAppState extends State<MyApp> {
       appController.requestPermission();
     }
 
+    if (!kIsWeb) {
+      appController.setupNotifications();
+    }
+
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      appController.showNotification(message);
+
       print('Got a message whilst in the foreground!');
       print('Message data: ${message.data}');
 
