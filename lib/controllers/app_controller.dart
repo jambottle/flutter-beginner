@@ -69,6 +69,7 @@ class AppController extends GetxController {
             channelDescription: channel.description,
             icon: 'launch_background',
           ),
+          iOS: DarwinNotificationDetails(),
         ),
       );
     }
