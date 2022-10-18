@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -29,7 +31,6 @@ class AppController extends GetxController {
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   Future<void> setupNotifications() async {
-    // Create an Android Notification Channel for heads up notifications
     channel = const AndroidNotificationChannel(
       'high_importance_channel', // id
       'High Importance Notifications', // name
@@ -40,17 +41,28 @@ class AppController extends GetxController {
 
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-    await flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.createNotificationChannel(channel);
-
-    // Set the iOS Notification Options for heads up notifications
-    await messaging.setForegroundNotificationPresentationOptions(
-      alert: true, // Required to display a heads up notification
-      badge: true,
-      sound: true,
+    // Initialize the Flutter Local Notifications Plugin package
+    await flutterLocalNotificationsPlugin.initialize(
+      InitializationSettings(
+        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        iOS: DarwinInitializationSettings(),
+      ),
     );
+
+    if (Platform.isAndroid) {
+      // Create an Android Notification Channel for heads up notifications
+      await flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.createNotificationChannel(channel);
+    } else if (Platform.isIOS) {
+      // Set the iOS Notification Options for heads up notifications
+      await messaging.setForegroundNotificationPresentationOptions(
+        alert: true, // Required to display a heads up notification
+        badge: true,
+        sound: true,
+      );
+    }
   }
 
   void showNotification(RemoteMessage message) {
