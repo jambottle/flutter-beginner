@@ -23,7 +23,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await appController.setupNotifications();
   appController.showNotification(message);
 
-  print("Handling a background message: ${message.messageId}");
+  print('[FlutterFire🔥] Background message ID: ${message.messageId}');
 }
 
 Future<void> main() async {
@@ -67,11 +67,11 @@ class _MyAppState extends State<MyApp> {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       appController.showNotification(message);
 
-      print('Got a message whilst in the foreground!');
-      print('Message data: ${message.data}');
+      print('[FlutterFire🔥] Foreground message data: ${message.data}');
 
       if (message.notification != null) {
-        print('Message also contained a notification: ${message.notification}');
+        print(
+            '[FlutterFire🔥] Foreground message also contained a notification: ${message.notification}');
       }
     });
   }

@@ -14,7 +14,8 @@ class AppController extends GetxController {
     NotificationSettings prevSettings =
         await messaging.getNotificationSettings();
 
-    print('User granted permission: ${prevSettings.authorizationStatus}');
+    print(
+        '[FlutterFire🔥] Granted permission: ${prevSettings.authorizationStatus}');
 
     if (prevSettings.authorizationStatus == AuthorizationStatus.notDetermined) {
       NotificationSettings settings = await messaging.requestPermission(
@@ -23,7 +24,8 @@ class AppController extends GetxController {
         sound: true,
       );
 
-      print('User granted permission: ${settings.authorizationStatus}');
+      print(
+          '[FlutterFire🔥] Granted permission: ${settings.authorizationStatus}');
     }
   }
 
