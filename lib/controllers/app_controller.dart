@@ -27,6 +27,24 @@ class AppController extends GetxController {
     }
   }
 
+  // Use the returned token to send messages to users from your custom server
+  Future<void> getToken() async {
+    String? token;
+
+    if (Platform.isAndroid) {
+      token = await messaging.getToken(
+        vapidKey:
+            'BBfPDzEPXXNFJeGfQwIZ-Hy1Mwy9ccjGQlWBHZZxrEWADstoKaGIgLPWdvMOKt4Xkkq_Ok2Ra5WIa_TL0ZUxR8U',
+      );
+
+      print('[FlutterFire🔥] Got GCM token: $token');
+    } else if (Platform.isIOS) {
+      token = await messaging.getAPNSToken();
+
+      print('[FlutterFire🔥] Got APNs token: $token');
+    }
+  }
+
   late AndroidNotificationChannel channel;
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 

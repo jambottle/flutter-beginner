@@ -60,6 +60,7 @@ class _MyAppState extends State<MyApp> {
     }
 
     if (!kIsWeb) {
+      appController.getToken();
       appController.setupNotifications();
     }
 
