@@ -33,17 +33,19 @@ class AppController extends GetxController {
   Future<void> getToken() async {
     String? token;
 
-    if (Platform.isAndroid) {
-      token = await messaging.getToken(
-        vapidKey:
-            'BBfPDzEPXXNFJeGfQwIZ-Hy1Mwy9ccjGQlWBHZZxrEWADstoKaGIgLPWdvMOKt4Xkkq_Ok2Ra5WIa_TL0ZUxR8U',
-      );
+    if (kDebugMode) {
+      if (Platform.isAndroid) {
+        token = await messaging.getToken(
+          vapidKey:
+              'BBfPDzEPXXNFJeGfQwIZ-Hy1Mwy9ccjGQlWBHZZxrEWADstoKaGIgLPWdvMOKt4Xkkq_Ok2Ra5WIa_TL0ZUxR8U',
+        );
 
-      print('[FlutterFire🔥] Got GCM token: $token');
-    } else if (Platform.isIOS) {
-      token = await messaging.getAPNSToken();
+        print('[FlutterFire🔥] Got GCM token: $token');
+      } else if (Platform.isIOS) {
+        token = await messaging.getAPNSToken();
 
-      print('[FlutterFire🔥] Got APNs token: $token');
+        print('[FlutterFire🔥] Got APNs token: $token');
+      }
     }
   }
 
