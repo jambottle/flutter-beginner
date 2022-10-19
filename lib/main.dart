@@ -12,7 +12,7 @@ import 'global_scaffold.dart';
 import 'utils/logger.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  /* Global State */
+  /* Global Controller */
   final AppController appController = Get.put(AppController());
 
   // If you're going to use other Firebase services in the background,
@@ -49,7 +49,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  /* Global State */
+  /* Global Controller */
   final AppController appController = Get.put(AppController());
 
   @override

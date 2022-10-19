@@ -12,7 +12,7 @@ class CreatePage extends StatefulWidget {
 
 class _CreatePageState extends State<CreatePage> {
   /* Local Controller */
-  final textEditingController = TextEditingController();
+  final _textEditingController = TextEditingController();
   final ImagePicker _picker = ImagePicker();
 
   /* Local State */
@@ -28,7 +28,7 @@ class _CreatePageState extends State<CreatePage> {
 
   @override
   void dispose() {
-    textEditingController.dispose();
+    _textEditingController.dispose();
     super.dispose();
   }
 
@@ -81,7 +81,7 @@ class _CreatePageState extends State<CreatePage> {
                     fit: BoxFit.cover,
                   ),
             TextField(
-              controller: textEditingController,
+              controller: _textEditingController,
               decoration: InputDecoration(
                 hintText: '문구 입력...',
               ),

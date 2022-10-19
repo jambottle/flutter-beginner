@@ -16,7 +16,7 @@ class FeedItem extends StatefulWidget {
 
 class _FeedItemState extends State<FeedItem> {
   /* Local State */
-  bool isHeartLiked = false;
+  bool _isHeartLiked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +37,11 @@ class _FeedItemState extends State<FeedItem> {
             IconButton(
               icon: Icon(
                 CupertinoIcons.heart,
-                color: isHeartLiked ? Colors.pink : Colors.black,
+                color: _isHeartLiked ? Colors.pink : Colors.black,
               ),
               onPressed: () {
                 setState(() {
-                  isHeartLiked = !isHeartLiked;
+                  _isHeartLiked = !_isHeartLiked;
                 });
               },
             ),

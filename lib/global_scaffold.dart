@@ -10,8 +10,9 @@ class GlobalScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /* Global State */
-    final BottomNavbarController controller = Get.put(BottomNavbarController());
+    /* Global Controller */
+    final BottomNavbarController navController =
+        Get.put(BottomNavbarController());
 
     return Obx(
       () => Scaffold(
@@ -52,11 +53,11 @@ class GlobalScaffold extends StatelessWidget {
           ],
         ),
         body: Center(
-          child: controller.currentPage,
+          child: navController.currentPage,
         ),
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: controller.currentIndex.value,
-          onTap: controller.changePage,
+          currentIndex: navController.currentIndex.value,
+          onTap: navController.changePage,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
