@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
+import '../utils/logger.dart';
+
 class AppController extends GetxController {
   static AppController get to => Get.find();
 
@@ -14,7 +16,7 @@ class AppController extends GetxController {
     NotificationSettings prevSettings =
         await messaging.getNotificationSettings();
 
-    print(
+    Logger.info(
         '[FlutterFire🔥] Granted permission: ${prevSettings.authorizationStatus}');
 
     if (prevSettings.authorizationStatus == AuthorizationStatus.notDetermined) {
@@ -24,7 +26,7 @@ class AppController extends GetxController {
         sound: true,
       );
 
-      print(
+      Logger.info(
           '[FlutterFire🔥] Granted permission: ${settings.authorizationStatus}');
     }
   }
@@ -40,11 +42,11 @@ class AppController extends GetxController {
               'BBfPDzEPXXNFJeGfQwIZ-Hy1Mwy9ccjGQlWBHZZxrEWADstoKaGIgLPWdvMOKt4Xkkq_Ok2Ra5WIa_TL0ZUxR8U',
         );
 
-        print('[FlutterFire🔥] Got GCM token: $token');
+        Logger.info('[FlutterFire🔥] Got GCM token: $token');
       } else if (Platform.isIOS) {
         token = await messaging.getAPNSToken();
 
-        print('[FlutterFire🔥] Got APNs token: $token');
+        Logger.info('[FlutterFire🔥] Got APNs token: $token');
       }
     }
   }

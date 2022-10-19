@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'controllers/app_controller.dart';
 import 'firebase_options.dart';
 import 'global_scaffold.dart';
+import 'utils/logger.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   /* Global State */
@@ -23,7 +24,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await appController.setupNotifications();
   appController.showNotification(message);
 
-  print('[FlutterFire🔥] Background message ID: ${message.messageId}');
+  Logger.info('[FlutterFire🔥] Background message ID: ${message.messageId}');
 }
 
 Future<void> main() async {
@@ -67,10 +68,10 @@ class _MyAppState extends State<MyApp> {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       appController.showNotification(message);
 
-      print('[FlutterFire🔥] Foreground message data: ${message.data}');
+      Logger.info('[FlutterFire🔥] Foreground message data: ${message.data}');
 
       if (message.notification != null) {
-        print(
+        Logger.info(
             '[FlutterFire🔥] Foreground message also contained a notification: ${message.notification}');
       }
     });
