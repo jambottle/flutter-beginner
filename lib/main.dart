@@ -37,6 +37,12 @@ Future<void> main() async {
   // Get a Firebase Remote Config object instance
   final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
 
+  // Set the minimum fetch interval to allow for frequent refreshes
+  await remoteConfig.setConfigSettings(RemoteConfigSettings(
+    fetchTimeout: const Duration(minutes: 1),
+    minimumFetchInterval: const Duration(minutes: 5),
+  ));
+
   // Set the background messaging handler early on, as a named top-level function
   FirebaseMessaging.onBackgroundMessage(
     _firebaseMessagingBackgroundHandler,
