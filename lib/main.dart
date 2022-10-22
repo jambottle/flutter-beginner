@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,6 +33,9 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // Get a Firebase Remote Config object instance
+  final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
 
   // Set the background messaging handler early on, as a named top-level function
   FirebaseMessaging.onBackgroundMessage(
