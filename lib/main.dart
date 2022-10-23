@@ -43,6 +43,14 @@ Future<void> main() async {
     minimumFetchInterval: const Duration(minutes: 5),
   ));
 
+  // Set in-app default parameter values if none are set in the backend
+  await remoteConfig.setDefaults(const {
+    "example_param_1": 42,
+    "example_param_2": 3.14159,
+    "example_param_3": true,
+    "example_param_4": "Hello, world!",
+  });
+
   // Set the background messaging handler early on, as a named top-level function
   FirebaseMessaging.onBackgroundMessage(
     _firebaseMessagingBackgroundHandler,
