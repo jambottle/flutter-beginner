@@ -51,6 +51,9 @@ Future<void> main() async {
     "example_param_4": "Hello, world!",
   });
 
+  // Fetch values from the backend and Make them available to the app
+  await remoteConfig.fetchAndActivate();
+
   // Set the background messaging handler early on, as a named top-level function
   FirebaseMessaging.onBackgroundMessage(
     _firebaseMessagingBackgroundHandler,
