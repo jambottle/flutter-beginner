@@ -5,15 +5,11 @@ import 'package:get/get.dart';
 import 'controllers/bottom_navbar_controller.dart';
 import 'views/create_page.dart';
 
-class GlobalScaffold extends StatelessWidget {
+class GlobalScaffold extends GetView<BottomNavbarController> {
   const GlobalScaffold({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    /* Global Controller */
-    final BottomNavbarController navController =
-        Get.put(BottomNavbarController());
-
     return Obx(
       () => Scaffold(
         appBar: AppBar(
@@ -53,11 +49,11 @@ class GlobalScaffold extends StatelessWidget {
           ],
         ),
         body: Center(
-          child: navController.currentPage,
+          child: controller.currentPage,
         ),
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: navController.currentIndex.value,
-          onTap: navController.changePage,
+          currentIndex: controller.currentIndex.value,
+          onTap: controller.changePage,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),

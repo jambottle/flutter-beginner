@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'controllers/app_controller.dart';
+import 'controllers/bottom_navbar_controller.dart';
 import 'firebase_options.dart';
 import 'global_scaffold.dart';
 import 'utils/logger.dart';
@@ -103,6 +104,10 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: GlobalScaffold(),
+      initialBinding: BindingsBuilder.put(
+        () => BottomNavbarController(),
+        permanent: true,
+      ),
     );
   }
 }
