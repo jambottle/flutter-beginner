@@ -8,7 +8,7 @@ import '../views/search_page.dart';
 class BottomNavbarController extends GetxController {
   static BottomNavbarController get to => Get.find();
 
-  final currentIndex = 0.obs;
+  final RxInt currentIndex = 0.obs;
 
   List<Widget> pages = [
     HomePage(),
@@ -19,6 +19,6 @@ class BottomNavbarController extends GetxController {
   Widget get currentPage => pages[currentIndex.value];
 
   void changePage(int index) {
-    currentIndex.value = index;
+    currentIndex(index);
   }
 }
