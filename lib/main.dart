@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'controllers/app_controller.dart';
+import 'controllers/app_dynamic_links_controller.dart';
 import 'controllers/bottom_navbar_controller.dart';
 import 'firebase_options.dart';
 import 'global_scaffold.dart';
@@ -73,6 +74,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   /* Global Controller */
   final AppController appController = Get.put(AppController());
+  final AppDynamicLinksController appDynamicLinksController =
+      Get.put(AppDynamicLinksController());
 
   @override
   void initState() {
@@ -97,6 +100,9 @@ class _MyAppState extends State<MyApp> {
             '[FlutterFire🔥] Foreground message also contained a notification: ${message.notification}');
       }
     });
+
+    // Handle Firebase Dynamic Links using GetxController
+    appDynamicLinksController.initialize(context);
   }
 
   @override
