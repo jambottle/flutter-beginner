@@ -13,13 +13,13 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
-  firebase_analytics: ^9.3.8
-  firebase_auth: ^3.11.2
-  firebase_core: ^1.24.0
+  firebase_analytics: ^10.0.5
+  firebase_auth: ^4.1.2
+  firebase_core: ^2.2.0
 
-  firebase_dynamic_links: ^4.3.11
-  firebase_messaging: ^13.0.4
-  firebase_remote_config: ^2.0.20
+  firebase_dynamic_links: ^5.0.5
+  firebase_messaging: ^14.1.0
+  firebase_remote_config: ^3.0.5
   flutter_local_notifications: ^12.0.0
 
   get: ^4.6.5
